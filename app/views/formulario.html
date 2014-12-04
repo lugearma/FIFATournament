@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	{% if provider == 'facebook' %}
+		<h2>Hola, como estas {{ nombre.displayName }} facebook</h2>
+	{% else %}
+		<h2>Hola, como estas {{ nombre.username }} twitter</h2>
+	{% endif %}
+	<a href="/log-out"><h2>Salir</h2></a>
+{% endblock %}
+	
+	
