@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+	{% if provider == 'facebook' %}
+		<h2>Entro desde {{ provider }}</h2>
+		<h3>Participantes inscritos</h3>
+		{{ participante.displayName }}
+	{% else %}
+		<h2>Entro desde {{ provider }}</h2>
+		<h3>Participantes inscritos</h3>
+		{{ participante.username }}
+	{% endif %}
+		<a href="/log-out"><h2>Salir</h2></a>
+{% endblock %}

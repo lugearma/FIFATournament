@@ -14,8 +14,8 @@ var facebookConnection = function (app){
 	}, function (accessToken, refreshToken, profile, done){
 
 		var user = new User({
-			name : profile.displayName,
-			facebook : profile
+			username : profile.displayName,
+			object : profile
 		});
 		
 		user.save(function (err){
@@ -33,7 +33,7 @@ var facebookConnection = function (app){
 
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', {
 		failureRedirect : '/?error = algo-fallo',
-		successRedirect : '/formulario'}));
+		successRedirect : '/participantes'}));
 };
 
 module.exports = facebookConnection;

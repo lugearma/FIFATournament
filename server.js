@@ -44,9 +44,11 @@ passport.deserializeUser(function (obj, done){
 });
 
 //Importamos los controladores y los cargamos
-var homeControllers = require('./app/controladores/homeControllers.js');
+var homeControllers = require('./app/controladores/home.js');
+var appControllers = require('./app/controladores/app.js')
 
-homeControllers(users, app);
+homeControllers(app, users);
+appControllers(app, users);
 
 //Cargamos los conecciones
 var facebookConnection = require('./app/connections/facebook.js');

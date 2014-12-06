@@ -14,11 +14,12 @@ var TwitterConnection = function (app){
 	},function (token, tokenSecret, profile, done){
 
 		user = new User({
-			name : profile.username,
-			twitter : profile
+			username : profile.username,
+			object : profile
 		});
 
 		user.save(function (err) {
+			debugger;
 			if (err){
 				done(err, null);
 				return;
@@ -31,7 +32,7 @@ var TwitterConnection = function (app){
 
 	app.get('/auth/twitter/callback', passport.authenticate('twitter', { 
 		failureRedirect : '/', 
-		successRedirect : '/formulario' 
+		successRedirect : '/participantes' 
 	}));
 };
 
