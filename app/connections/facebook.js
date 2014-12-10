@@ -2,16 +2,19 @@ var passportFacebook = require('passport-facebook'),
 	passport = require('passport'),
 	FacebookStrategy = passportFacebook.Strategy;
 
+var keys = require('../conf/keys');
+
 var User = require('../models/user.js');
 
-var facebookConnection = function (app){
+var facebookConnection = function (app, users){
 	console.log('Facebook esta listo');
 
 	passport.use(new FacebookStrategy({
-		clientID : '1003671356315608',
-		clientSecret : '807780f14e4f2c2536b55ed4bd76803d',
-		callbackURL : 'http://localhost:3000/auth/facebook/callback'
+		clientID : keys.facebook.clientID,
+		clientSecret : keys.facebook.clientSecret,
+		callbackURL : keys.facebook.callbackURL
 	}, function (accessToken, refreshToken, profile, done){
+
 
 		var user = new User({
 			username : profile.displayName,
@@ -23,6 +26,7 @@ var facebookConnection = function (app){
 				done(err, null);
 				return;
 			}
+
 
 			done(null, profile);
 		});

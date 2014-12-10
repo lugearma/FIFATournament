@@ -2,15 +2,17 @@ var passport = require('passport'),
 	passportTwitter = require('passport-twitter'),
 	TwitterStrategy = passportTwitter.Strategy;
 
+var keys = require('../conf/keys');
+
 var User = require('../models/user');
-// var key = require('../key');
+
 var TwitterConnection = function (app){
 	console.log('Twitter esta listo');
 
 	passport.use(new TwitterStrategy({
-		consumerKey : 'dtQ2TFHwuRGM2xsvMpECcyOPh',
-		consumerSecret : 'R8gNLwCnj6jL7CEoIzKls3uEU9rTAzgcH7SpkOBHyEb0ScWqgn',
-		callbackURL : 'http://127.0.0.1:3000/auth/twitter/callback'
+		consumerKey : keys.twitter.consumerKey,
+		consumerSecret : keys.twitter.consumerSecret,
+		callbackURL : keys.twitter.callbackURL
 	},function (token, tokenSecret, profile, done){
 
 		user = new User({
@@ -19,7 +21,6 @@ var TwitterConnection = function (app){
 		});
 
 		user.save(function (err) {
-			debugger;
 			if (err){
 				done(err, null);
 				return;

@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var user = require('../models/user');
 
 var homeControllers = function (app, users){
 	
@@ -8,12 +9,12 @@ var homeControllers = function (app, users){
 	//Middleware que checa si el participante esta logeado
 	var isLogedIn = function (req, res, next){
 		if(req.isAuthenticated()){
-			debugger;
 			res.redirect('/participantes');
 			return;
 		}
 		next();
 	};
+
 
 	app.get('/', isLogedIn, function (req, res) {
 		res.render('home', {
@@ -23,10 +24,10 @@ var homeControllers = function (app, users){
 		});
 	});
 
-	app.post('/log-in', function (req, res){
+	app.get('/log-in', function (req, res){
 		users.push(req.session.passport.user);
 		debugger;
-		res.redirect('/participantes');
+		res.redirect('/auth/facebook');
 	});
 };
 
