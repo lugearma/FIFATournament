@@ -1,8 +1,5 @@
 {% extends 'layout.html' %}
 
-{% block head %}
-{% endblock %}
-
 {% block content %}
 	{% if provider == 'facebook' %}
 		<h2>Entro desde {{ provider }}</h2>
@@ -12,6 +9,7 @@
 		<h2>Entro desde {{ provider }}</h2>
 		<h3>Participantes inscritos</h3>
 		{{ participante.username }}
+		<img src="graph.facebook.com/v2.2/{{ participante.id }}/picture">
 	{% endif %}
-		<a href="/log-out"><h2>Salir</h2></a>
+		<a href="/log-out" class="btn btn-danger">Salir</a>
 {% endblock %}

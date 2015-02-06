@@ -37,6 +37,10 @@ var appController = function (app, users){
 		req.session.destroy();
 		res.redirect('/');
 	});
+
+	app.get('/players', function (req, res){
+
+	});
 };
 
 module.exports = appController;

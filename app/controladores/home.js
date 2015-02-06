@@ -26,7 +26,6 @@ var homeControllers = function (app, users){
 
 	app.get('/log-in', function (req, res){
 		users.push(req.session.passport.user);
-		debugger;
 		res.redirect('/auth/facebook');
 	});
 };
